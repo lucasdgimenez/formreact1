@@ -3,6 +3,7 @@ import "./usuario_novo.css"
 import firebase from "../../config/firebase"
 import 'firebase/auth'
 import {Link} from "react-router-dom"
+import NavBar from "../../components/NavBar";
 
 const NovoUsuario = () => {
   const [email, setEmail] = useState()
@@ -45,20 +46,22 @@ const NovoUsuario = () => {
   }
 
   return (
+    <>
+    <NavBar/>
     <div className="form_cadastro">
       <form className="mx-auto form-login text-center">
-      <h1 className="text-white font-weight-bold mb-3 text-center">Cadastro</h1>
+      <h1 className="text-black font-weight-bold mt-5 mb-3 text-center">Cadastro</h1>
       <input onChange={(e)=>{setEmail(e.target.value)}}  type="email" className="form-control my-2 col-md-12" id="inputEmail" placeholder="Email" aria-describedby="emailHelp"/>
       <input onChange={(e)=>{setPassword(e.target.value)}}  type="password" className="form-control my-2 col-md-12" id="inputPassword" placeholder="Senha"/>
 
       {
-        carregando ? <div className="spinner-border text-light" role="status">
+        carregando ? <div className="spinner-border text-black" role="status">
         <span className="sr-only">Loading...</span>
-      </div> : <button onClick={cadastro} type="button" className="btn btn-lg btn-block btn-light mt-3 mb-5">Cadastro</button>
+      </div> : <button onClick={cadastro} type="button" className="btn btn-lg btn-block btn-primary mt-3 mb-5">Cadastro</button>
       }
 
       
-      <div className="msg-login text-white text-center my-5">
+      <div className="msg-login text-black text-center my-5">
         {msgTipo === 'Sucesso' && <span> Usuario cadastrado com sucesso! &#128526; </span>
           
         } 
@@ -67,7 +70,7 @@ const NovoUsuario = () => {
       </div>
       
       <div className="msg-login text-black text-center my-5">
-        <Link to="/" className="mx-2">Quero fazer um login</Link>
+        <Link to="/login" className="mx-2">Quero fazer um login</Link>
         {/*<Link to="/" className="mx-2">Quero fazer um login</Link>*/}
 
       </div>
@@ -75,6 +78,7 @@ const NovoUsuario = () => {
        
       
     </div>
+    </>
   )
 }
 
